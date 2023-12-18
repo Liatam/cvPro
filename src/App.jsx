@@ -4,9 +4,9 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import Index from './components/Index';
 import Resume from './components/Resume';
 import {Provider} from './context/cvContext';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import SignUp from './pages/Signup'; 
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import SignUp from './pages/Signup/Signup'; 
 
 function App() {
   return (
