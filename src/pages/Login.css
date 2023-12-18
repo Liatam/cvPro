@@ -1,0 +1,54 @@
+.login-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-header {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; /* Change the background color as needed */
+    color: purple;
+}
+
+.login-form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: purple; /* Change the background color as needed */
+    color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 60%; /* Adjust the width of the form as needed */
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 16px;
+}
+
+.login-button {
+    background-color: white;
+    color: purple;
+    border: 2px solid purple;
+    padding: 10px;
+    cursor: pointer;
+    width: 30%;
+    align-self: flex-end;
+}
+
+.login-button:hover {
+    background-color: purple;
+    color: white;
+}
