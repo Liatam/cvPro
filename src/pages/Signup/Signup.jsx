@@ -1,17 +1,24 @@
 import React from 'react'
 import { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import './Signup.css';
+import '../Signup/Signup.css';
+import { useNavigate } from 'react-router-dom';
+import { addUser } from '../../../firebaseConfig';
 
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('user');
+  
   const auth = getAuth();
+  const navigate = useNavigate();
 
-  const handleSignUp = () => {
+  const handleSignUp = (e) => {
+    e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((response) => {
-        console.log(response.user);
+        addUser(email, password, role)
+        navigate('/login')
       })
       .catch((error) => {
         alert(error.message);

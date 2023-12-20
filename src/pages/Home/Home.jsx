@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Home.css';
+import '../Home/Home.css';
+import AppNavbar from '../../components/AppNavbar'
 
 function Home() {
     return (
         <div>
+             <AppNavbar/>
             <div className="home-container">
                 <div className="purple-section">
                     <h1>Welcome to Resume Maker</h1>

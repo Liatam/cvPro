@@ -1,12 +1,22 @@
 import React from 'react'
-import { useContext, useRef } from 'react'
-import '../pages/Resume.css'
-import cvContext from '../context/cvContext'
+import { useContext, useRef, useState, useEffect } from 'react'
+import '../Resume/Resume.css'
+import cvContext from '../../context/cvContext'
 import html2pdf from 'html2pdf.js'
 
-export default function Resume() {
-    const { data, setdata } = useContext(cvContext);
+export default function Resume({data}) {
     const resumeRef = useRef();
+    const [localData, setLocalData] = useState({})
+    const { formData } = useContext(cvContext);
+
+    useEffect(() => {
+        if (data) {
+            setLocalData(data);
+        } else {
+            setLocalData(formData);
+        }
+
+    }, [data])
     const handleDownload = () => {
         const resumeElement = resumeRef.current;
 
@@ -30,8 +40,7 @@ export default function Resume() {
                         <header>
                             <img className="img" src="umages/pic2.jpg" alt="pic" />
                             <div className="det">
-                                <h2>{data.firstName}</h2>
-                                <h2 className="orange">{data.lastName}</h2>
+                                <h2 className="orange">{localData.fullName}</h2>
                                 <h4>Lorem ipsum dolor sit.</h4>
                             </div>
                             <article className="left">
@@ -45,9 +54,9 @@ export default function Resume() {
                                     </div>
                                     <div>
                                         <ul>
-                                            <li>0533160783</li>
-                                            <li>Mifal Hashas st. Beitar Ilit</li>
-                                            <li>chagit2002@gmail.com</li>
+                                            <li>{localData.phone}</li>
+                                            <li>{localData.adress}</li>
+                                            <li>{localData.email}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -95,7 +104,7 @@ export default function Resume() {
                             <div className="header">
                                 <h3>Senior</h3>
                                 <h3>web developer</h3>
-                                <p>{data.from} - {data.to}</p>
+                                <p>{localData.from} - {localData.to}</p>
                             </div>
                             <article className="right">
                                 <h4>workes in Lorem Ipsum -New York</h4>
